@@ -1,0 +1,20 @@
+form > mat-form-field {
+  width: 100%;
+}
+
+.goaler-option {
+  display: flex;
+
+  .goaler-avatar {
+    img {
+      display: block;
+      border-radius: 100%;
+    }
+  }
+  
+  .goaler-info {
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 10px;
+  }
+}

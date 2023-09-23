@@ -1,0 +1,22 @@
+.home-content-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 200px;
+
+  .home-title {
+    text-align: center;
+    font-size: 38px;
+    font-family: 'Copperlate';
+    line-height: normal;
+  }
+
+  .home-autocomplete-wrapper {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .home-actions-group-wrapper {
+    margin-top: 20px;
+  }
+}

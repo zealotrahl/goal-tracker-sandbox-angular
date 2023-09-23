@@ -1,0 +1,28 @@
+<form class="autocomplete-form">
+  <mat-form-field appearance="outline">
+    <mat-label>Find goaler</mat-label>
+    <input type="text"
+           placeholder="Search..."
+           aria-label="Goaler"
+           matInput
+           [formControl]="goalerControl"
+           [matAutocomplete]="auto" >
+    <mat-autocomplete #auto="matAutocomplete" >
+      <mat-option *ngFor="let option of filteredOptions | async" [disabled]="option.isDisabled" [value]="option.value?.username">
+        <div class="goaler-option">
+          <div class="goaler-avatar">
+            <img [src]="option.value?.avatar || 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon'" alt="" style="width: 50px; height: 50px; display: inline-block;">
+          </div>
+          <div class="goaler-info">
+            <span class="goaler-name">
+              {{option.value?.firstName}}
+            </span>
+            <span class="goaler-username">
+              {{ option.value?.username }}
+            </span>
+          </div>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

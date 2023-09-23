@@ -1,0 +1,43 @@
+<div class="signup-form-wrapper">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <h2>Sign up form</h2>
+    <div class="row-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Firstname:</mat-label>
+        <input matInput #input placeholder="John" formControlName="firstName">
+        <mat-error *ngIf="signupForm.get('firstName')?.hasError('required')">
+          Firstname field is required!
+        </mat-error>
+        <mat-error *ngIf="signupForm.get('firstName')?.hasError('maxlength')">
+          Firstname field length exceeds maxlength of {{ signupForm.get('firstName')?.errors?.['maxlength']?.requiredLength }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Lastname:</mat-label>
+        <input matInput #input placeholder="Smith" formControlName="lastName">
+        <mat-error *ngIf="signupForm.get('lastName')?.hasError('required')">
+          Lastname field is required!
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Username:</mat-label>
+      <input matInput #input placeholder="John smith" formControlName="username">
+      <mat-error *ngIf="signupForm.get('username')?.hasError('required')">
+        Username field is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Passowrd:</mat-label>
+      <input matInput #input formControlName="password" type="password">
+      <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+        Password field is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Repeat password:</mat-label>
+      <input matInput #input formControlName="repeatPassword" type="password">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">Sign up</button>
+  </form>
+</div>

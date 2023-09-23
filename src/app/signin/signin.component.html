@@ -1,0 +1,17 @@
+<div class="signin-form-wrapper">
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <h2>Sign in form</h2>
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Username:</mat-label>
+      <input matInput #input placeholder="John smith" formControlName="username">
+      <mat-error *ngIf="signinForm.get('username')?.hasError('required')">
+        Username field is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Passowrd:</mat-label>
+      <input matInput #input formControlName="password" type="password">
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="!signinForm.valid">Sign in</button>
+  </form>
+</div>
