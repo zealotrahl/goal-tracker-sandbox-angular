@@ -18,7 +18,7 @@
     <mat-card-content>
       <mat-list>
         <div *ngFor="let goal of goals; index as i; first as isFirst; last as isLast;" class="goal-list-item-wrapper">
-          <mat-list-item (click)="openDialog()" class="goal-wrapper">
+          <mat-list-item (click)="openDialog(goal)" class="goal-wrapper">
             <span class="goal-title">{{ goal.title }}</span>            
             <div class="goal-desc">
               {{ goal.description }}

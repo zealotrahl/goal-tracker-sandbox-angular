@@ -30,9 +30,12 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  openDialog(): void {
+  openDialog(goal: Goal): void {
     this.dialog.open(GoalComponent, {
       width: '450px',
+      data: {
+        goal,
+      }
     });
   }
 
