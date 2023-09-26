@@ -7,7 +7,7 @@
            matInput
            [formControl]="goalerControl"
            [matAutocomplete]="auto" >
-    <mat-autocomplete #auto="matAutocomplete" >
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="goalerSelected($event)">
       <mat-option *ngFor="let option of filteredOptions | async" [disabled]="option.isDisabled" [value]="option.value?.username">
         <div class="goaler-option">
           <div class="goaler-avatar">

@@ -1,0 +1,32 @@
+<div class="profile-content-wrapper">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar style="margin-right: 10px;">
+        <img [src]="user?.avatar || 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon'" alt="" style="width: 50px; height: 50px; display: inline-block;">
+      </div>
+      <mat-card-title>{{ user?.firstName }} {{ user?.lastName  }}</mat-card-title>
+      <mat-card-subtitle>@{{ user?.username }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 20px;">
+      <p>
+        {{ user?.desc }}
+      </p>
+    </mat-card-content>
+    <div style="padding: 20px;">
+      <mat-divider></mat-divider>
+    </div>
+    <mat-card-content>
+      <mat-list>
+        <div *ngFor="let goal of goals; index as i; first as isFirst; last as isLast;" class="goal-list-item-wrapper">
+          <mat-list-item (click)="openDialog()" class="goal-wrapper">
+            <span class="goal-title">{{ goal.title }}</span>            
+            <div class="goal-desc">
+              {{ goal.description }}
+            </div>
+          </mat-list-item>
+          <mat-divider *ngIf="!isLast"></mat-divider>
+        </div>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

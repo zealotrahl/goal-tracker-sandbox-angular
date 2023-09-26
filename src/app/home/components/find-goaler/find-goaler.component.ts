@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, from, map, mergeAll, mergeMap, startWith } from 'rxjs';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Router } from '@angular/router';
+import { Observable, map, mergeMap, startWith } from 'rxjs';
 import { User } from 'src/app/users/user.interface';
 import { UsersService } from 'src/app/users/users.service';
 
@@ -21,7 +23,7 @@ export class FindGoalerComponent implements OnInit {
   users: User[] = [];
   filteredOptions: Observable<IOption[]> = new Observable();
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) {}
 
   async ngOnInit() {
     this.filteredOptions = this.goalerControl.valueChanges.pipe(
@@ -49,5 +51,9 @@ export class FindGoalerComponent implements OnInit {
     }
 
     return result;
+  }
+
+  goalerSelected($event: MatAutocompleteSelectedEvent) {
+    this.router.navigate([`profile/${$event.option.value}`]);
   }
 }

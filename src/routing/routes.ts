@@ -12,6 +12,14 @@ export const appRoutes: Routes = [
     },
   },
   {
+    path: 'profile',
+    loadChildren: () => {
+      return import('../app/profile/profile.module').then(
+        (module) => module.ProfileModule,
+      )
+    },
+  },
+  {
     path: 'signin',
     loadChildren: () => {
       return import('../app/signin/signin.module').then(

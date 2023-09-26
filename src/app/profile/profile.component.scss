@@ -1,0 +1,28 @@
+.profile-content-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 200px;
+
+  .goal-list-item-wrapper {
+    .goal-wrapper {
+      padding: 20px;
+      cursor: pointer;
+
+      &:hover {
+        transition: 0.2s;
+        box-shadow: var(--mdc-protected-button-hover-container-elevation, 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12));
+      }
+      .goal-title {
+        font-size: 18px;
+        font-weight: bolder;
+      }
+      .goal-desc {
+        font-size: 14px;
+      }
+    }
+    mat-divider {
+      margin: 10px;
+    }
+  }
+}
