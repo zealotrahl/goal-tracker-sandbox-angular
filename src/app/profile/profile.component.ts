@@ -6,6 +6,8 @@ import { GoalsService } from '../goals/goals.service';
 import { Goal } from '../goals/goal.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { GoalComponent } from './components/goal/goal.component';
+import { Comment } from '../comments/comment.interface';
+import { CommentsService } from '../comments/comments.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,13 +18,15 @@ export class ProfileComponent implements OnInit {
   user: User | null = null;
   private username: string | null = null;
   goals: Goal[] = [];
+  comments: Comment[] = [];
 
   constructor(
     private usersService: UsersService,
     route: ActivatedRoute,
     private router: Router,
     private goalsService: GoalsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private commentsService: CommentsService,
   ) {
     const param = route.snapshot.paramMap.get('username');
     if (param) {
@@ -53,5 +57,6 @@ export class ProfileComponent implements OnInit {
     }
 
     this.goals = await this.goalsService.getGoalsByUserId(this.user.id);
+    this.comments = await this.commentsService.getCommentsByProfile(this.user.id);
   }
 }

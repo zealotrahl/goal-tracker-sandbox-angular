@@ -7,7 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { GoalComponent } from './components/goal/goal.component';
-import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CommentsComponent } from './components/comments/comments.component';
+import { AddComment } from './components/comments/add-comment.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 export const profileRoutes: Routes = [{ path: ':username', component: ProfileComponent }];
@@ -15,7 +20,9 @@ export const profileRoutes: Routes = [{ path: ':username', component: ProfileCom
 @NgModule({
   declarations: [
     ProfileComponent,
-    GoalComponent
+    GoalComponent,
+    CommentsComponent,
+    AddComment
   ],
   imports: [
     RouterModule.forChild(profileRoutes),
@@ -24,7 +31,10 @@ export const profileRoutes: Routes = [{ path: ':username', component: ProfileCom
     MatButtonModule,
     MatDividerModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ]
 })
 export class ProfileModule { }

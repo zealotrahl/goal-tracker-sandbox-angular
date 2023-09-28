@@ -1,0 +1,15 @@
+<div>
+  <ul>
+    <li *ngFor="let comment of comments">
+        <p>
+          From: {{ comment.user.username }}
+        </p>
+        <p>
+          Text: {{ comment.text }}
+        </p>
+    </li>
+  </ul>
+  <div>
+    <add-comment></add-comment>
+  </div>
+</div>

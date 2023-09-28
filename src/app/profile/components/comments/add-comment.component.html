@@ -1,0 +1,15 @@
+<div style="padding: 20px;">
+  <form [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">
+    <h2>Add comment form</h2>
+    <mat-form-field appearance="outline" class="mat-form-field">
+      <mat-label>Comment:</mat-label>
+      <textarea matInput #input placeholder="Profile comment" formControlName="text">
+      </textarea>
+      <mat-error *ngIf="addCommentForm.get('text')?.hasError('required')">
+        Text field is required!
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" [disabled]="!addCommentForm.valid">Add comment</button>
+  </form>
+</div>
