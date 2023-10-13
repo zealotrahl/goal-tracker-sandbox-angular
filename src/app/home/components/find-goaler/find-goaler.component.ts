@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
-import { Observable, map, mergeMap, startWith } from 'rxjs';
+import { Observable, debounceTime, map, mergeMap, startWith } from 'rxjs';
 import { User } from 'src/app/users/user.interface';
 import { UsersService } from 'src/app/users/users.service';
 
@@ -28,12 +28,16 @@ export class FindGoalerComponent implements OnInit {
   async ngOnInit() {
     this.filteredOptions = this.goalerControl.valueChanges.pipe(
       startWith(''),
+      debounceTime(300),
       map(async (value) => await this.filterUsers(value || '')),
       mergeMap((observable) => observable),
     );
   }
 
   async filterUsers(value: string): Promise<IOption[]> {
+    if (value == '')
+      return [];
+
     const result: IOption[] = (await this.usersService.searchUsers(value)).map((user: User) => {
       return {
         searchText: user.firstName + user.lastName + user.username,
